@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Election Countdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://picsum.photos/2000/400');
+        }
+
+        .container {
+            width: 45%;
+            margin: 75px auto;
+            padding: 20px;
+            border: 5px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff; /* white or any other color you prefer */
+        }
+
+        .container h1 {
+            font-size: 36px;
+            color: #008000;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="countdown"></h1>
+        <script src="https://cdn.jsdelivr.net/npm/@taylorbuchanan/countdown@2.5.0/dist/minified.js"></script>
+        <script>
+            const targetDate = new Date("2024-11-05T00:00:00");
+            const countdown = document.getElementById("countdown");
+
+            function updateCountdown() {
+                const now = new Date();
+                const delta = targetDate - now;
+                let days = Math.floor(delta / 86400000);
+                let hours = Math.floor((delta % 86400000) / 3600000);
+                let minutes = Math.floor((delta % 3600000) / 60000);
+                let seconds = Math.floor((delta % 60000) / 1000);
+
+                countdown.textContent = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+            }
+
+            setInterval(updateCountdown, 1000); // update every second
+        </script>
+    </div>
+</body>
+</html>
